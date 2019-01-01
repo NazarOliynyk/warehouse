@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:xmlns:th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+        .container{
+            height: 150px;
+        }
+        .products{
+            background: pink;
+            width: 100px;
+            height: 100px;
+            border: solid black 2px ;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+<h2>
+    WAREHOUSE
+</h2>
+<!--pressing submit saves a new commodity and calls post method @PostMapping("/saveUser")-->
+<form action="/saveUser" method="post">
+
+
+    <input type="text" name="name" placeholder="name">
+
+    <input type="text" name="description" placeholder="description">
+
+    <input type="number" name="price" placeholder="price">
+
+    <input type="submit" name="" placeholder="" value="touch me">
+
+</form>
+
+
+    <div class="container" th:each="c : ${commodities}">
+
+
+        <div class="products" th:text="${c.id +' '+c.name}"></div>
+    </div>
+
+</body>
+</html>
