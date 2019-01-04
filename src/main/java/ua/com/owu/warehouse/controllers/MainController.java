@@ -15,6 +15,7 @@ public class MainController {
 
     @Autowired
     CommodityDAO commodityDAO;
+
     @GetMapping("/")
     public String callPage(Model model){
         model.addAttribute("commodities", commodityDAO.findAll());
@@ -22,21 +23,21 @@ public class MainController {
         return "index";
     }
     // pressing submit saves a new commodity
-    @PostMapping("/saveUser")
+    @PostMapping("/saveCommodity")
     public String save(
             @RequestParam("name") String name, Model model,
             @RequestParam("description") String description,
-            @RequestParam("price") double price
+            @RequestParam("price") String price
     ){
         Commodity commodity = new Commodity();
         commodity.setName(name);
         commodity.setDescription(description);
-        commodity.setPrice(price);
+        commodity.setPrice(Double.parseDouble(price));
         commodityDAO.save(commodity);
-        model.addAttribute("name", name);
-        model.addAttribute("description", description);
-        model.addAttribute("price", price);
-        return "result";
+//        model.addAttribute("name", name);
+//        model.addAttribute("description", description);
+//        model.addAttribute("price", price);
+        return "redirect:/";
     }
 
 }

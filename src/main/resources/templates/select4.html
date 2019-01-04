@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:xmlns:th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Select1</title>
+    <style>
+        .flex-container1-div{
+            background-color: beige;
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-size: 10px
+        }
+        .flex-container-5 {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+<div class="flex-container-5">
+
+    <div class="flex-container1-div" th:each="c : ${commodities}">
+
+        <div  th:text="${c.id +'. '+c.name +', '+c.description+', '+c.price}"></div>
+
+    </div>
+
+</div>
+</body>
+</html>
